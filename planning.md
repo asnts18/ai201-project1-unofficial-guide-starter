@@ -41,13 +41,16 @@ Northeastern off-campus housing. This domain is valuable because students need p
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
 **Chunk size:**
-300–600 tokens.
+350 tokens (1 400 chars). Spec range: 300–600 tokens.
 
 **Overlap:**
-100–150 tokens
+100 tokens (400 chars). Spec range: 100–150 tokens.
 
 **Reasoning:**
-Reddit comments are short, conversational, and often split across replies, so smaller chunks work better than for formal policy docs. The overlap helps preserve the back-and-forth context in housing threads. Other documents mix step-by-step instructions, FAQs, policy details, and listings, so moderate chunks help keep a whole policy section or checklist item together without making retrieval too broad. 
+Reddit comments are short, conversational, and often split across replies, so smaller chunks work better than for formal policy docs. The overlap helps preserve the back-and-forth context in housing threads. Other documents mix step-by-step instructions, FAQs, policy details, and listings, so moderate chunks help keep a whole policy section or checklist item together without making retrieval too broad.
+
+**Implementation note (updated after chunking run):**
+Initial implementation used 450-token chunks (spec midpoint), which produced 45 chunks across 8 available documents — below the 50-chunk minimum for meaningful retrieval. Reduced to 350 tokens (lower end of spec range, still within 300–600) to produce 57 chunks. The Reddit megathread and remaining blocked sources are not yet available; when added they will substantially increase the chunk count, so no further adjustment is expected.
 
 ---
 
